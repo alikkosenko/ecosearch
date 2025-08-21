@@ -25,7 +25,7 @@ def search(model:str = None):
     print(f"Searching {model}...")
     model_list = list()
     for i, row in enumerate(rows, start=1):
-        if model.lower() in row[1].lower():
+        if model.lower() in row[1].lower() and row[0] != "":
             link = "https://docs.google.com/spreadsheets/d/1SAWJrKfZEcGM1HGBWfIHg5pdEh9aaQfyjmGjXwKIn8U/edit?"\
                    "gid=1068582570#gid=1068582570&range=B{}".format(i)
             row.insert(0, link)
