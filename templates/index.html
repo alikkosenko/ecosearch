@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <img src="/static/favicon.ico" alt="EcoDrive AUTO" style="height:50px;">
+    <title>EcoDrive Auto Поиск</title>
+    <link rel="icon" href="/static/eco.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            padding: 0;
+        }
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 1em;
+            border: none;
+            border-radius: 6px;
+            background: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+
+        /* Обычная таблица на больших экранах */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #f4f4f4;
+        }
+
+        /* Адаптация для мобильных */
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                display: none;
+            }
+            tr {
+                border: 1px solid #ccc;
+                margin-bottom: 15px;
+                padding: 10px;
+                border-radius: 6px;
+            }
+            td {
+                border: none;
+                padding: 5px 0;
+                position: relative;
+                padding-left: 50%;
+            }
+            td::before {
+                position: absolute;
+                top: 0;
+                left: 10px;
+                width: 45%;
+                white-space: nowrap;
+                font-weight: bold;
+            }
+            td:nth-of-type(1)::before { content: "Артикул"; }
+            td:nth-of-type(2)::before { content: "Модель"; }
+            td:nth-of-type(3)::before { content: "Сайт"; }
+            td:nth-of-type(4)::before { content: "Фото"; }
+            td:nth-of-type(5)::before { content: "Видео"; }
+            td:nth-of-type(6)::before { content: "VIN"; }
+            td:nth-of-type(7)::before { content: "Статус"; }
+            td:nth-of-type(8)::before { content: "Склад"; }
+            td:nth-of-type(9)::before { content: "Номер резерва"; }
+        }
+    </style>
+</head>
+<body>
+    <form id="searchForm" method="get" action="/">
+        <input type="text" name="q" placeholder="Введите модель авто" id="searchInput" value="{{ query }}">
+        <button type="submit">Поиск</button>
+    </form>
+    <button onclick="quickSearch('Denza N7')">Denza N7</button>
+    <button onclick="quickSearch('Lixiang L7')">Lixiang L7</button>
+    <button onclick="quickSearch('YU7')">YU7</button>
+    <button onclick="quickSearch('SU7')">SU7</button>
+
+    <script>
+    function quickSearch(text) {
+        // Подставляем текст в поле поиска
+        document.getElementById('searchInput').value = text;
+        // Отправляем форму
+        document.getElementById('searchForm').submit();
+    }
+    </script>
+
+    {% if results is not none %}
+        {% if results %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Артикул</th>
+                        <th>Модель</th>
+                        <th>Сайт</th>
+                        <th>Фото</th>
+                        <th>Видео</th>
+                        <th>VIN</th>
+                        <th>Статус</th>
+                        <th>Склад</th>
+                        <th>Номер резерва</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in results %}
+                        <tr>
+                            <td><a href="{{ item[0]  }}">{{ item[1] }}</a></td>
+                            <td>{{ item[2] }}</td>
+                            <td><a href="{{ item[3] }}" target="_blank">Ссылка</a></td>
+                            <td><a href="{{ item[4] }}" target="_blank">Фото</a></td>
+                            <td><a href="{{ item[5] }}" target="_blank">Видео</a></td>
+                            <td>{{ item[23] }}</td>
+                            <td>{{ item[24] }}</td>
+                            <td>{{ item[25] }}</td>
+                            <td>{{ item[26] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p style="text-align:center;">Ничего не найдено</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
