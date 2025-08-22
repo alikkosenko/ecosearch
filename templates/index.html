@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <img src="/static/favicon.ico" alt="EcoDrive AUTO" style="height:50px;">
+    <img src="{{ url_for('static', filename='favicon.ico') }}" alt="EcoDrive AUTO" style="height:50px;">
     <title>EcoDrive Auto Поиск</title>
-    <link rel="icon" href="/static/eco.ico" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='eco.ico') }}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
