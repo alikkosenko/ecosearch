@@ -1,5 +1,12 @@
 from flask import Flask, request, render_template
 import table_reader as tr
+from Reader import Reader
+import threading
+
+readert = Reader()
+t = threading.Thread(target=readert.run, daemon=True)
+t.start()
+
 
 app = Flask(__name__)
 

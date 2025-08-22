@@ -93,7 +93,10 @@
             td:nth-of-type(3)::before { content: "VIN"; }
             td:nth-of-type(4)::before { content: "Статус"; }
             td:nth-of-type(5)::before { content: "Склад"; }
-            td:nth-of-type(6)::before { content: "Номер резерва"; }
+            td:nth-of-type(6)::before { content: "Ціна наявність"; }
+            td:nth-of-type(7)::before { content: "Ціна 20/80"; }
+            td:nth-of-type(8)::before { content: "Ціна 80/20"; }
+            td:nth-of-type(9)::before { content: "Дата прибуття"; }
         }
     </style>
 </head>
@@ -102,10 +105,38 @@
         <input type="text" name="q" placeholder="Введите модель авто" id="searchInput" value="{{ query }}">
         <button type="submit">Поиск</button>
     </form>
+    <button onclick="quickSearch('Lixiang L6')">Li L6</button>
+    <button onclick="quickSearch('Lixiang L7')">Li L7</button>
+    <button onclick="quickSearch('Lixiang L9')">Li L9</button>
+    <button onclick="quickSearch('Xiaomi SU7')">Xi SU7</button>
+    <button onclick="quickSearch('Xiaomi YU7')">Xi YU7</button>
+    <button onclick="quickSearch('Avatr 07')">Avatr 07</button>
+    <button onclick="quickSearch('Leopard 3')">Leo 3</button>
+    <button onclick="quickSearch('Leopard 5')">Leo 5</button>
+    <button onclick="quickSearch('Leopard 8')">Leo 8</button>
+    <button onclick="quickSearch('Luxeed R7')">Luxeed R7</button>
+    <button onclick="quickSearch('AITO M5')">AITO M5</button>
+    <button onclick="quickSearch('AITO M8')">AITO M8</button>
     <button onclick="quickSearch('Denza N7')">Denza N7</button>
-    <button onclick="quickSearch('Lixiang L7')">Lixiang L7</button>
-    <button onclick="quickSearch('YU7')">YU7</button>
-    <button onclick="quickSearch('SU7')">SU7</button>
+    <button onclick="quickSearch('Denza N9')">Denza N9</button>
+    <button onclick="quickSearch('Denza Z9GT')">Denza Z9GT</button>
+    <button onclick="quickSearch('Denza Z9')">Denza Z9</button>
+    <button onclick="quickSearch('Denza D9')">Denza D9</button>
+    <button onclick="quickSearch('Sea Lion 05')">Sea Lion 05</button>
+    <button onclick="quickSearch('Sea Lion 06')">Sea Lion 06</button>
+    <button onclick="quickSearch('Sea Lion 07')">Sea Lion 07</button>
+    <button onclick="quickSearch('Song Plus')">Song Plus</button>
+    <button onclick="quickSearch('Song Pro')">Song Pro</button>
+    <button onclick="quickSearch('Song L')">Song L</button>
+    <button onclick="quickSearch('Han')">Han</button>
+    <button onclick="quickSearch('Han L')">Han L</button>
+    <button onclick="quickSearch('Tang L')">Tang L</button>
+    <button onclick="quickSearch('Qin Plus')">Qin Plus</button>
+    <button onclick="quickSearch('Dolphin')">Dolphin</button>
+    <button onclick="quickSearch('Seagull')">Seagull</button>
+    <button onclick="quickSearch('Summer')">Summer</button>
+
+
 
     <script>
     function quickSearch(text) {
@@ -126,18 +157,24 @@
                         <th>VIN</th>
                         <th>Статус</th>
                         <th>Склад</th>
-                        <th>Номер резерва</th>
+                        <th>Ціна наявніть</th>
+                        <th>Ціна 20/80</th>
+                        <th>Ціна 80/20</th>
+                        <th>Дата прибуття</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in results %}
                         <tr>
                             <td><a href="{{ item[0]  }}">{{ item[1] }}</a></td>
-                            <td>{{ item[2] }}</td>
-                            <td>{{ item[23] }}</td>
-                            <td>{{ item[24] }}</td>
-                            <td>{{ item[25] }}</td>
-                            <td>{{ item[26] }}</td>
+                            <td>{{ item[5] }}</td>
+                            <td>{{ item[17] }}</td>
+                            <td>{{ item[18] }}</td>
+                            <td>{{ item[19] }}</td>
+                            <td>{{ item[13] }}</td>
+                            <td>{{ item[14] }}</td>
+                            <td>{{ item[15] }}</td>
+                            <td>{{ item[16] }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

@@ -1,35 +1,22 @@
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+import pickle
 
-def search(model:str = None):
-    # Определяем область доступа
-    scope = ["https://spreadsheets.google.com/feeds",
-             "https://www.googleapis.com/auth/drive"]
+def search(request:str = None):
 
-    # Загружаем ключ сервисного аккаунта
-    creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
-    client = gspread.authorize(creds)
+    rows = None
 
-    # Открываем таблицу по названию
-    sheet = client.open("Transit_test").sheet1
-
-    # Читаем все строки
-    rows = sheet.get_all_values()
+    with open("data.pkl", "rb") as f:
+        rows = pickle.load(f)
 
 
-    spreadsheet=client.open_by_key("1SAWJrKfZEcGM1HGBWfIHg5pdEh9aaQfyjmGjXwKIn8U")
-    sheet = spreadsheet.worksheet('Транзит')
-
-    print(sheet.acell('E9').address)
-
-    print(f"Searching {model}...")
+    print(f"Searching {request}...")
     model_list = list()
     for i, row in enumerate(rows, start=1):
-        if model.lower() in row[1].lower() and row[0] != "":
-            link = "https://docs.google.com/spreadsheets/d/1SAWJrKfZEcGM1HGBWfIHg5pdEh9aaQfyjmGjXwKIn8U/edit?"\
-                   "gid=1068582570#gid=1068582570&range=B{}".format(i)
+        if request.lower() in row[22].lower() and row[0] != "" and not row[19]:
+            link = "https://docs.google.com/spreadsheets/d/1PNjWz8LTArpcRovsEUTjd543oEjRHeh7D_N8o4EhIvA/edit?"\
+                   "gid=1640256538#gid=1640256538&range=B{}".format(i)
             row.insert(0, link)
             model_list.append(row)
 
     return model_list
+
 
