@@ -6,6 +6,7 @@
     <title>EcoDrive Auto Поиск</title>
     <link rel="icon" href="{{ url_for('static', filename='eco.ico') }}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -103,44 +104,44 @@
 <body>
     <form id="searchForm" method="get" action="/">
         <input type="text" name="q" placeholder="Введите модель авто" id="searchInput" value="{{ query }}">
-        <button type="submit">Поиск</button>
+        <button class="green-btn" type="submit">Поиск</button>
     </form>
-    <button onclick="quickSearch('Lixiang L6')">Li L6</button>
-    <button onclick="quickSearch('Lixiang L7')">Li L7</button>
-    <button onclick="quickSearch('Lixiang L9')">Li L9</button><br>
-    <button onclick="quickSearch('Xiaomi SU7')">Xi SU7</button>
-    <button onclick="quickSearch('Xiaomi YU7')">Xi YU7</button><br>
-    <button onclick="quickSearch('Avatr 07')">Avatr 07</button><br>
-    <button onclick="quickSearch('Leopard 3')">Leo 3</button>
-    <button onclick="quickSearch('Leopard 5')">Leo 5</button>
-    <button onclick="quickSearch('Leopard 8')">Leo 8</button><br>
-    <button onclick="quickSearch('Luxeed R7')">Luxeed R7</button><br>
-    <button onclick="quickSearch('AITO M5')">AITO M5</button>
-    <button onclick="quickSearch('AITO M8')">AITO M8</button><br>
-    <button onclick="quickSearch('Denza N7')">Denza N7</button>
-    <button onclick="quickSearch('Denza N9')">Denza N9</button>
-    <button onclick="quickSearch('Denza Z9GT')">Denza Z9GT</button>
-    <button onclick="quickSearch('Denza Z9')">Denza Z9</button>
-    <button onclick="quickSearch('Denza D9')">Denza D9</button><br>
-    <button onclick="quickSearch('Sea Lion 05')">Sea Lion 05</button>
-    <button onclick="quickSearch('Sea Lion 06')">Sea Lion 06</button>
-    <button onclick="quickSearch('Sea Lion 07')">Sea Lion 07</button>
-    <button onclick="quickSearch('Song Plus')">Song Plus</button>
-    <button onclick="quickSearch('Song Pro')">Song Pro</button>
-    <button onclick="quickSearch('Song L')">Song L</button>
-    <button onclick="quickSearch('Han')">Han</button>
-    <button onclick="quickSearch('Han L')">Han L</button>
-    <button onclick="quickSearch('Tang L')">Tang L</button>
-    <button onclick="quickSearch('Qin Plus')">Qin Plus</button>
-    <button onclick="quickSearch('Dolphin')">Dolphin</button>
-    <button onclick="quickSearch('Seagull')">Seagull</button>
-    <button onclick="quickSearch('Summer')">Summer</button>
-    <button onclick="quickSearch('Yuan Up')">Yuan Up</button><br>
-    <button onclick="quickSearch('Starship 7')">Starship 7</button>
-    <button onclick="quickSearch('Galaxy E5')">E5</button><br>
-    <button onclick="quickSearch('Radar RD5')">Radar RD5</button><br>
-    <button onclick="quickSearch('Lynk&Co 900')">900</button><br>
-    <button onclick="quickSearch('Unyx 06')">Unyx 06</button>
+    <button class="green-btn" onclick="quickSearch('Lixiang L6')">Li L6</button>
+    <button class="green-btn" onclick="quickSearch('Lixiang L7')">Li L7</button>
+    <button class="green-btn" onclick="quickSearch('Lixiang L9')">Li L9</button><br>
+    <button class="green-btn" onclick="quickSearch('Xiaomi SU7')">Xi SU7</button>
+    <button class="green-btn" onclick="quickSearch('Xiaomi YU7')">Xi YU7</button><br>
+    <button class="green-btn" onclick="quickSearch('Avatr 07')">Avatr 07</button><br>
+    <button class="green-btn" onclick="quickSearch('Leopard 3')">Leo 3</button>
+    <button class="green-btn" onclick="quickSearch('Leopard 5')">Leo 5</button>
+    <button class="green-btn" onclick="quickSearch('Leopard 8')">Leo 8</button><br>
+    <button class="green-btn" onclick="quickSearch('Luxeed R7')">Luxeed R7</button><br>
+    <button class="green-btn" onclick="quickSearch('AITO M5')">AITO M5</button>
+    <button class="green-btn" onclick="quickSearch('AITO M8')">AITO M8</button><br>
+    <button class="green-btn" onclick="quickSearch('Denza N7')">Denza N7</button>
+    <button class="green-btn" onclick="quickSearch('Denza N9')">Denza N9</button>
+    <button class="green-btn" onclick="quickSearch('Denza Z9GT')">Denza Z9GT</button>
+    <button class="green-btn" onclick="quickSearch('Denza Z9')">Denza Z9</button>
+    <button class="green-btn" onclick="quickSearch('Denza D9')">Denza D9</button><br>
+    <button class="green-btn" onclick="quickSearch('Sea Lion 05')">Sea Lion 05</button>
+    <button class="green-btn" onclick="quickSearch('Sea Lion 06')">Sea Lion 06</button>
+    <button class="green-btn" onclick="quickSearch('Sea Lion 07')">Sea Lion 07</button>
+    <button class="green-btn" onclick="quickSearch('Song Plus')">Song Plus</button>
+    <button class="green-btn" onclick="quickSearch('Song Pro')">Song Pro</button>
+    <button class="green-btn" onclick="quickSearch('Song L')">Song L</button>
+    <button class="green-btn" onclick="quickSearch('Han')">Han</button>
+    <button class="green-btn" onclick="quickSearch('Han L')">Han L</button>
+    <button class="green-btn" onclick="quickSearch('Tang L')">Tang L</button>
+    <button class="green-btn" onclick="quickSearch('Qin Plus')">Qin Plus</button>
+    <button class="green-btn" onclick="quickSearch('Dolphin')">Dolphin</button>
+    <button class="green-btn" onclick="quickSearch('Seagull')">Seagull</button>
+    <button class="green-btn" onclick="quickSearch('Summer')">Summer</button>
+    <button class="green-btn" onclick="quickSearch('Yuan Up')">Yuan Up</button><br>
+    <button class="green-btn" onclick="quickSearch('Starship 7')">Starship 7</button>
+    <button class="green-btn" onclick="quickSearch('Galaxy E5')">E5</button><br>
+    <button class="green-btn" onclick="quickSearch('Radar RD5')">Radar RD5</button><br>
+    <button class="green-btn" onclick="quickSearch('Lynk&Co 900')">900</button><br>
+    <button class="green-btn" onclick="quickSearch('Unyx 06')">Unyx 06</button>
 
 
 
