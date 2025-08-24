@@ -88,15 +88,17 @@
                 white-space: nowrap;
                 font-weight: bold;
             }
-            td:nth-of-type(1)::before { content: "Артикул"; }
-            td:nth-of-type(2)::before { content: "Модель"; }
-            td:nth-of-type(3)::before { content: "VIN"; }
-            td:nth-of-type(4)::before { content: "Статус"; }
-            td:nth-of-type(5)::before { content: "Склад"; }
-            td:nth-of-type(6)::before { content: "Ціна наявність"; }
-            td:nth-of-type(7)::before { content: "Ціна 20/80"; }
-            td:nth-of-type(8)::before { content: "Ціна 80/20"; }
-            td:nth-of-type(9)::before { content: "Дата прибуття"; }
+            td:nth-of-type(1)::before { content: "Фото"; }
+            td:nth-of-type(2)::before { content: "Артикул"; }
+            td:nth-of-type(3)::before { content: "Модель"; }
+            td:nth-of-type(4)::before { content: "VIN"; }
+            td:nth-of-type(5)::before { content: "Статус"; }
+            td:nth-of-type(6)::before { content: "Склад"; }
+            td:nth-of-type(7)::before { content: "Ціна наявність"; }
+            td:nth-of-type(8)::before { content: "Ціна 20/80"; }
+            td:nth-of-type(9)::before { content: "Ціна 80/20"; }
+            td:nth-of-type(10)::before { content: "Дата прибуття"; }
+            td:nth-of-type(11)::before { content: "Резерв"; }
         }
     </style>
 </head>
@@ -105,30 +107,38 @@
         <input type="text" name="q" placeholder="Введите модель авто" id="searchInput" value="{{ query }}">
         <button class="green-btn" type="submit">Поиск</button>
     </form>
+    <img src="{{ url_for('static', filename='image7.png') }}" alt="Car" style="height:50px;">
     <button class="green-btn" onclick="quickSearch('Lixiang L6')">Li L6</button>
     <button class="green-btn" onclick="quickSearch('Lixiang L7')">Li L7</button>
     <button class="green-btn" onclick="quickSearch('Lixiang L9')">Li L9</button><br>
     <hr>
+    <img src="{{ url_for('static', filename='image9.png') }}" alt="Car" style="height:50px;">
     <button class="green-btn" onclick="quickSearch('Xiaomi SU7')">Xi SU7</button>
     <button class="green-btn" onclick="quickSearch('Xiaomi YU7')">Xi YU7</button><br>
     <hr>
+    <img src="{{ url_for('static', filename='image18.png') }}" alt="Car" style="height:50px;">
     <button class="green-btn" onclick="quickSearch('Avatr 07')">Avatr 07</button><br>
     <hr>
+    <img src="{{ url_for('static', filename='image32.png') }}" alt="Car" style="height:50px;">
     <button class="green-btn" onclick="quickSearch('Leopard 3')">Leo 3</button>
     <button class="green-btn" onclick="quickSearch('Leopard 5')">Leo 5</button>
     <button class="green-btn" onclick="quickSearch('Leopard 8')">Leo 8</button><br>
     <hr>
+    <img src="{{ url_for('static', filename='image43.png') }}" alt="Car" style="height:50px;">
     <button class="green-btn" onclick="quickSearch('Luxeed R7')">Luxeed R7</button><br>
     <hr>
+    <img src="{{ url_for('static', filename='image140.png') }}" alt="Car" style="height:50px;">
     <button class="green-btn" onclick="quickSearch('AITO M5')">AITO M5</button>
     <button class="green-btn" onclick="quickSearch('AITO M8')">AITO M8</button><br>
     <hr>
+    <img src="{{ url_for('static', filename='image53.png') }}" alt="Car" style="height:50px;">
     <button class="green-btn" onclick="quickSearch('Denza N7')">Denza N7</button>
     <button class="green-btn" onclick="quickSearch('Denza N9')">Denza N9</button>
     <button class="green-btn" onclick="quickSearch('Denza Z9GT')">Denza Z9GT</button>
     <button class="green-btn" onclick="quickSearch('Denza Z9')">Denza Z9</button>
     <button class="green-btn" onclick="quickSearch('Denza D9')">Denza D9</button><br>
     <hr>
+    <img src="{{ url_for('static', filename='image48.png') }}" alt="Car" style="height:50px;">
     <button class="green-btn" onclick="quickSearch('Sea Lion 05')">Sea Lion 05</button>
     <button class="green-btn" onclick="quickSearch('Sea Lion 06')">Sea Lion 06</button>
     <button class="green-btn" onclick="quickSearch('Sea Lion 07')">Sea Lion 07</button>
@@ -144,13 +154,17 @@
     <button class="green-btn" onclick="quickSearch('Summer')">Summer</button>
     <button class="green-btn" onclick="quickSearch('Yuan Up')">Yuan Up</button><br>
     <hr>
+    <img src="{{ url_for('static', filename='image125.png') }}" alt="Car" style="height:50px;">
     <button class="green-btn" onclick="quickSearch('Starship 7')">Starship 7</button>
     <button class="green-btn" onclick="quickSearch('Galaxy E5')">E5</button><br>
     <hr>
+    <img src="{{ url_for('static', filename='image128.png') }}" alt="Car" style="height:50px;">
     <button class="green-btn" onclick="quickSearch('Radar RD5')">Radar RD5</button><br>
     <hr>
+    <img src="{{ url_for('static', filename='image129.png') }}" alt="Car" style="height:50px;">
     <button class="green-btn" onclick="quickSearch('Lynk&Co 900')">900</button><br>
     <hr>
+    <img src="{{ url_for('static', filename='image135.png') }}" alt="Car" style="height:50px;">
     <button class="green-btn" onclick="quickSearch('Unyx 06')">Unyx 06</button>
 
 
@@ -170,6 +184,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Фото</th>
                         <th>Артикул</th>
                         <th>Модель</th>
                         <th>VIN</th>
@@ -179,20 +194,23 @@
                         <th>Ціна 20/80</th>
                         <th>Ціна 80/20</th>
                         <th>Дата прибуття</th>
+                        <th>Резерв</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in results %}
                         <tr>
-                            <td><a href="{{ item[0]  }}">{{ item[1] }}</a></td>
-                            <td>{{ item[5] }}</td>
-                            <td>{{ item[17] }}</td>
+                            <td><img src="{{ url_for('static', filename=item[0]) }}" style="height:50px;"></td>
+                            <td><a href="{{ item[1]  }}">{{ item[2] }}</a></td>
+                            <td>{{ item[6] }}</td>
                             <td>{{ item[18] }}</td>
                             <td>{{ item[19] }}</td>
-                            <td>{{ item[13] }}</td>
+                            <td>{{ item[20] }}</td>
                             <td>{{ item[14] }}</td>
                             <td>{{ item[15] }}</td>
                             <td>{{ item[16] }}</td>
+                            <td>{{ item[17] }}</td>
+                            <td>{{ item[21] }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

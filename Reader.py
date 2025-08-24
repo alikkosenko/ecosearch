@@ -4,6 +4,8 @@ import pickle
 from time import sleep
 import logging
 import threading
+import pandas as pd
+import os
 
 class Reader(threading.Thread):
     def __init__(self, credentials:str="credenstials.json", sheet:str="Транзит Авто**"):
@@ -25,8 +27,14 @@ class Reader(threading.Thread):
         with open("data.pkl", "wb") as f:
             pickle.dump(rows, f)
 
+
     def run(self):
         while True:
             print("Update")
             self.read_table()
             sleep(5)
+
+
+if __name__ == "__main__":
+    r = Reader()
+    r.run()
