@@ -177,6 +177,17 @@
         // Отправляем форму
         document.getElementById('searchForm').submit();
     }
+
+    function copyText(element) {
+    const text = element.innerText;  // Берём текст из <td>
+    navigator.clipboard.writeText(text).then(() => {
+        // Можно добавить подсветку или уведомление
+        element.style.backgroundColor = "#d4edda";
+        setTimeout(() => element.style.backgroundColor = "", 500);
+    }).catch(err => {
+        console.error("Ошибка копирования: ", err);
+    });
+    }
     </script>
 
     {% if results is not none %}
@@ -203,7 +214,7 @@
                             <td><img src="{{ url_for('static', filename=item[0]) }}" style="height:60px;"></td>
                             <td><a href="{{ item[1]  }}">{{ item[2] }}</a></td>
                             <td>{{ item[6] }}</td>
-                            <td>{{ item[18] }}</td>
+                            <td onclick="copyText(this)">{{ item[18] }}</td>
                             <td>{{ item[19] }}</td>
                             <td>{{ item[20] }}</td>
                             <td>{{ item[14] }}</td>
