@@ -1,6 +1,16 @@
 import pickle
 from typing import Any
 import imgsearch
+from datetime import datetime
+
+def parse_date(x):
+    try:
+        if x[17]:
+            return datetime.strptime(x[17], "%d.%m.%Y")
+        else:
+            return datetime.max  # пустые даты будут в конце
+    except ValueError:
+        return datetime.max  # некорректные или пустые даты в конец
 
 def search(request: str = None) -> list[Any]:
 
@@ -24,13 +34,23 @@ def search(request: str = None) -> list[Any]:
                 row.insert(0, imgdict[i])
             else:
                 row.insert(0, "")
+
+
             model_list.append(row)
 
     # sorting list
+
+    model_list.sort(key=parse_date)
+
     model_list = ([i for i in model_list if "в наявност" in i[19].lower() or "в наявност" in i[20].lower()]
                   + [i for i in model_list if "в наявност" not in i[19].lower() or "в наявност" not in i[20].lower()])
     model_list = [i for i in model_list if not i[21]] + [i for i in model_list if i[21]]
 
+    for i in model_list:
+        if not i[21]:
+            i[21] = "-"
+        if not i[17]:
+            i[17] = "-"
 
 
     return model_list
