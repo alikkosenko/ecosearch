@@ -32,7 +32,7 @@ class Reader(threading.Thread):
         while True:
             print("Update")
             self.read_table()
-            sleep(5)
+            sleep(30)
 
 
 if __name__ == "__main__":
