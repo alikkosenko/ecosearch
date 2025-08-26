@@ -212,16 +212,16 @@
                     {% for item in results %}
                         <tr>
                             <td><img src="{{ url_for('static', filename=item[0]) }}" style="height:60px;"></td>
-                            <td><a href="{{ item[1]  }}">{{ item[2] }}</a></td>
-                            <td>{{ item[6] }}</td>
-                            <td onclick="copyText(this)">{{ item[19] }}</td>
+                            <td><a href="{{ item[1]  }}">{{ item[5] }}</a></td>
+                            <td>{{ item[5] }}</td>
+                            <td onclick="copyText(this)">{{ item[2] }}</td>
                             <td>{{ item[20] }}</td>
                             <td>{{ item[21] }}</td>
-                            <td>{{ item[15] }}</td>
-                            <td>{{ item[16] }}</td>
                             <td>{{ item[17] }}</td>
                             <td>{{ item[18] }}</td>
-                            <td>{{ item[22] }}</td>
+                            <td>{{ item[19] }}</td>
+                            <td>{{ item[3] }}</td>
+                            <td>{{ item[4] }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
