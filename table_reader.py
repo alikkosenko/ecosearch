@@ -3,6 +3,9 @@ from typing import Any
 import imgsearch
 from datetime import datetime
 
+LINK = "https://docs.google.com/spreadsheets/d/1PNjWz8LTArpcRovsEUTjd543oEjRHeh7D_N8o4EhIvA/edit?"\
+                   "gid=1640256538#gid=1640256538&range=B{}"
+
 def parse_date(x):
     try:
         if x[3]:
@@ -26,8 +29,7 @@ def search(request: str = None) -> list[Any]:
     for i, row in enumerate(rows, start=1):
         print(row[22])
         if request.lower() in row[22].lower() and row[0] != "":
-            link = "https://docs.google.com/spreadsheets/d/1PNjWz8LTArpcRovsEUTjd543oEjRHeh7D_N8o4EhIvA/edit?"\
-                   "gid=1640256538#gid=1640256538&range=B{}".format(i)
+            link = LINK.format(i)
             row.insert(0, link)
 
             imgdict = imgsearch.get_img_dict()

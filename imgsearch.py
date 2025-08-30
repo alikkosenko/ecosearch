@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 from typing import Any
 
 def get_img_dict():
-    drawing_file = ("drawing1.xml")
+    drawing_file = "drawing1.xml"
 
     # Пространства имён
     ns = {
