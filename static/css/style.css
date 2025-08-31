@@ -1,0 +1,105 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 10px;
+    padding: 0;
+}
+
+h2 {
+    font-size: 1.4em;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    background: green;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+        /* Обычная таблица на больших экранах */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background: #f4f4f4;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+table, thead, tbody, th, td, tr {
+    display: block;
+}
+
+thead tr {
+    display: none;
+}
+
+tr {
+    border: 3px solid green;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+td {
+    border: none;
+    padding: 5px 0;
+    position: relative;
+    padding-left: 50%;
+}
+
+td::before {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+td:nth-of-type(1)::before { content: "Фото"; }
+td:nth-of-type(2)::before { content: "Артикул"; }
+td:nth-of-type(3)::before { content: "Модель"; }
+td:nth-of-type(4)::before { content: "VIN"; }
+td:nth-of-type(5)::before { content: "Статус"; }
+td:nth-of-type(6)::before { content: "Склад"; }
+td:nth-of-type(7)::before { content: "Ціна наявність"; }
+td:nth-of-type(8)::before { content: "Ціна 20/80"; }
+td:nth-of-type(9)::before { content: "Ціна 80/20"; }
+td:nth-of-type(10)::before { content: "Дата прибуття"; }
+td:nth-of-type(11)::before { content: "Резерв"; }
