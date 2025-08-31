@@ -15,8 +15,16 @@ def search_page():
     query = request.args.get("q", "")
     results = None
     if query:
-        results = tr.search(query)
+        results = tr.search_cars(query)
     return render_template("index.html", query=query, results=results)
+
+@app.route("/vin", methods=["GET"])
+def search_vin():
+    query = request.args.get("q", "")
+    results = None
+    if query:
+        results = tr.search_cars(query)
+    return render_template("vin.html", query=query, results=results)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",debug=True)

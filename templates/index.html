@@ -6,101 +6,8 @@
     <title>EcoDrive Auto Поиск</title>
     <link rel="icon" href="{{ url_for('static', filename='eco.ico') }}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 10px;
-            padding: 0;
-        }
-        h2 {
-            font-size: 1.4em;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        form {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-        input[type="text"] {
-            flex: 1;
-            min-width: 200px;
-            padding: 10px;
-            font-size: 1em;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-        button {
-            padding: 10px 15px;
-            font-size: 1em;
-            border: none;
-            border-radius: 6px;
-            background: green;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #0056b3;
-        }
-
-        /* Обычная таблица на больших экранах */
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background: #f4f4f4;
-        }
-
-        /* Адаптация для мобильных */
-        @media (max-width: 768px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
-            }
-            thead tr {
-                display: none;
-            }
-            tr {
-                border: 3px solid green;
-                margin-bottom: 15px;
-                padding: 10px;
-                border-radius: 6px;
-            }
-            td {
-                border: none;
-                padding: 5px 0;
-                position: relative;
-                padding-left: 50%;
-            }
-            td::before {
-                position: absolute;
-                top: 0;
-                left: 10px;
-                width: 45%;
-                white-space: nowrap;
-                font-weight: bold;
-            }
-            td:nth-of-type(1)::before { content: "Фото"; }
-            td:nth-of-type(2)::before { content: "Артикул"; }
-            td:nth-of-type(3)::before { content: "Модель"; }
-            td:nth-of-type(4)::before { content: "VIN"; }
-            td:nth-of-type(5)::before { content: "Статус"; }
-            td:nth-of-type(6)::before { content: "Склад"; }
-            td:nth-of-type(7)::before { content: "Ціна наявність"; }
-            td:nth-of-type(8)::before { content: "Ціна 20/80"; }
-            td:nth-of-type(9)::before { content: "Ціна 80/20"; }
-            td:nth-of-type(10)::before { content: "Дата прибуття"; }
-            td:nth-of-type(11)::before { content: "Резерв"; }
-        }
-    </style>
+    <!-- Подгружаем стили CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <form id="searchForm" method="get" action="/">
@@ -108,87 +15,67 @@
         <button class="green-btn" type="submit">Поиск</button>
     </form>
     <img src="{{ url_for('static', filename='Lixiang.png') }}" alt="Car" style="height:50px;">
-    <button class="green-btn" onclick="quickSearch('Lixiang L6')">Li L6</button>
-    <button class="green-btn" onclick="quickSearch('Lixiang L7')">Li L7</button>
-    <button class="green-btn" onclick="quickSearch('Lixiang L9')">Li L9</button><br>
+    <button onclick="quickSearch('Lixiang L6')">Li L6</button>
+    <button onclick="quickSearch('Lixiang L7')">Li L7</button>
+    <button onclick="quickSearch('Lixiang L9')">Li L9</button><br>
     <hr>
     <img src="{{ url_for('static', filename='Xiaomi.png') }}" alt="Car" style="height:50px;">
-    <button class="green-btn" onclick="quickSearch('Xiaomi SU7')">Xi SU7</button>
-    <button class="green-btn" onclick="quickSearch('Xiaomi YU7')">Xi YU7</button><br>
+    <button onclick="quickSearch('Xiaomi SU7')">Xi SU7</button>
+    <button onclick="quickSearch('Xiaomi YU7')">Xi YU7</button><br>
     <hr>
     <img src="{{ url_for('static', filename='Avatr.png') }}" alt="Car" style="height:50px;">
-    <button class="green-btn" onclick="quickSearch('Avatr 07')">Avatr 07</button><br>
+    <button onclick="quickSearch('Avatr 07')">Avatr 07</button><br>
     <hr>
     <img src="{{ url_for('static', filename='Leopard.png') }}" alt="Car" style="height:50px;">
-    <button class="green-btn" onclick="quickSearch('Leopard 3')">Leo 3</button>
-    <button class="green-btn" onclick="quickSearch('Leopard 5')">Leo 5</button>
-    <button class="green-btn" onclick="quickSearch('Leopard 8')">Leo 8</button><br>
+    <button onclick="quickSearch('Leopard 3')">Leo 3</button>
+    <button onclick="quickSearch('Leopard 5')">Leo 5</button>
+    <button onclick="quickSearch('Leopard 8')">Leo 8</button><br>
     <hr>
     <img src="{{ url_for('static', filename='Luxeed.png') }}" alt="Car" style="height:50px;">
-    <button class="green-btn" onclick="quickSearch('Luxeed R7')">Luxeed R7</button><br>
+    <button onclick="quickSearch('Luxeed R7')">Luxeed R7</button><br>
     <hr>
     <img src="{{ url_for('static', filename='Aito.png') }}" alt="Car" style="height:50px;">
-    <button class="green-btn" onclick="quickSearch('AITO M5')">AITO M5</button>
-    <button class="green-btn" onclick="quickSearch('AITO M8')">AITO M8</button><br>
+    <button onclick="quickSearch('AITO M5')">AITO M5</button>
+    <button onclick="quickSearch('AITO M8')">AITO M8</button><br>
     <hr>
     <img src="{{ url_for('static', filename='Denza.png') }}" alt="Car" style="height:50px;">
-    <button class="green-btn" onclick="quickSearch('Denza N7')">Denza N7</button>
-    <button class="green-btn" onclick="quickSearch('Denza N9')">Denza N9</button>
-    <button class="green-btn" onclick="quickSearch('Denza Z9GT')">Denza Z9GT</button>
-    <button class="green-btn" onclick="quickSearch('Denza Z9')">Denza Z9</button>
-    <button class="green-btn" onclick="quickSearch('Denza D9')">Denza D9</button><br>
+    <button onclick="quickSearch('Denza N7')">Denza N7</button>
+    <button onclick="quickSearch('Denza N9')">Denza N9</button>
+    <button onclick="quickSearch('Denza Z9GT')">Denza Z9GT</button>
+    <button onclick="quickSearch('Denza Z9')">Denza Z9</button>
+    <button onclick="quickSearch('Denza D9')">Denza D9</button><br>
     <hr>
     <img src="{{ url_for('static', filename='BYD.png') }}" alt="Car" style="height:50px;">
-    <button class="green-btn" onclick="quickSearch('Sea Lion 05')">Sea Lion 05</button>
-    <button class="green-btn" onclick="quickSearch('Sea Lion 06')">Sea Lion 06</button>
-    <button class="green-btn" onclick="quickSearch('Sea Lion 07')">Sea Lion 07</button>
-    <button class="green-btn" onclick="quickSearch('Song Plus')">Song Plus</button>
-    <button class="green-btn" onclick="quickSearch('Song Pro')">Song Pro</button>
-    <button class="green-btn" onclick="quickSearch('Song L')">Song L</button>
-    <button class="green-btn" onclick="quickSearch('Han')">Han</button>
-    <button class="green-btn" onclick="quickSearch('Han L')">Han L</button>
-    <button class="green-btn" onclick="quickSearch('Tang L')">Tang L</button>
-    <button class="green-btn" onclick="quickSearch('Qin Plus')">Qin Plus</button>
-    <button class="green-btn" onclick="quickSearch('Dolphin')">Dolphin</button>
-    <button class="green-btn" onclick="quickSearch('Seagull')">Seagull</button>
-    <button class="green-btn" onclick="quickSearch('Summer')">Summer</button>
-    <button class="green-btn" onclick="quickSearch('Yuan Up')">Yuan Up</button><br>
+    <button onclick="quickSearch('Sea Lion 05')">Sea Lion 05</button>
+    <button onclick="quickSearch('Sea Lion 06')">Sea Lion 06</button>
+    <button onclick="quickSearch('Sea Lion 07')">Sea Lion 07</button>
+    <button onclick="quickSearch('Song Plus')">Song Plus</button>
+    <button onclick="quickSearch('Song Pro')">Song Pro</button>
+    <button onclick="quickSearch('Song L')">Song L</button>
+    <button onclick="quickSearch('Han')">Han</button>
+    <button onclick="quickSearch('Han L')">Han L</button>
+    <button onclick="quickSearch('Tang L')">Tang L</button>
+    <button onclick="quickSearch('Qin Plus')">Qin Plus</button>
+    <button onclick="quickSearch('Dolphin')">Dolphin</button>
+    <button onclick="quickSearch('Seagull')">Seagull</button>
+    <button onclick="quickSearch('Summer')">Summer</button>
+    <button onclick="quickSearch('Yuan Up')">Yuan Up</button><br>
     <hr>
     <img src="{{ url_for('static', filename='Geely.png') }}" alt="Car" style="height:50px;">
-    <button class="green-btn" onclick="quickSearch('Starship 7')">Starship 7</button>
-    <button class="green-btn" onclick="quickSearch('Galaxy E5')">E5</button><br>
+    <button onclick="quickSearch('Starship 7')">Starship 7</button>
+    <button onclick="quickSearch('Galaxy E5')">E5</button><br>
     <hr>
     <img src="{{ url_for('static', filename='Radar.png') }}" alt="Car" style="height:50px;">
-    <button class="green-btn" onclick="quickSearch('Radar RD5')">Radar RD5</button><br>
+    <button onclick="quickSearch('Radar RD5')">Radar RD5</button><br>
     <hr>
     <img src="{{ url_for('static', filename='Lynk.png') }}" alt="Car" style="height:50px;">
-    <button class="green-btn" onclick="quickSearch('Lynk&Co 900')">900</button><br>
+    <button onclick="quickSearch('Lynk&Co 900')">900</button><br>
     <hr>
     <img src="{{ url_for('static', filename='WV.png') }}" alt="Car" style="height:50px;">
-    <button class="green-btn" onclick="quickSearch('Unyx 06')">Unyx 06</button>
+    <button onclick="quickSearch('Unyx 06')">Unyx 06</button>
 
-
-
-
-    <script>
-    function quickSearch(text) {
-        // Подставляем текст в поле поиска
-        document.getElementById('searchInput').value = text;
-        // Отправляем форму
-        document.getElementById('searchForm').submit();
-    }
-
-    function copyText(element) {
-    const text = element.innerText;  // Берём текст из <td>
-    navigator.clipboard.writeText(text).then(() => {
-        // Можно добавить подсветку или уведомление
-        element.style.backgroundColor = "#d4edda";
-        setTimeout(() => element.style.backgroundColor = "", 500);
-    }).catch(err => {
-        console.error("Ошибка копирования: ", err);
-    });
-    }
-    </script>
+    <!-- Подгружаем файл с используемыми функциями JS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
     {% if results is not none %}
         {% if results %}
