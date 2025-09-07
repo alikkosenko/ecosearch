@@ -1,14 +1,27 @@
+function showOverlay() {
+    document.getElementById("overlay").style.display = "flex";
+}
+
+function hideOverlay() {
+    document.getElementById("overlay").style.display = "none";
+}
+
+// При сабмите формы
+document.getElementById("searchForm").addEventListener("submit", function() {
+    showOverlay();
+});
+
+// Для быстрых кнопок
 function quickSearch(text) {
-        // Подставляем текст в поле поиска
-        document.getElementById('searchInput').value = text;
-        // Отправляем форму
-        document.getElementById('searchForm').submit();
+    const input = document.getElementById('searchInput');
+    input.value = text;
+    showOverlay();   // ✅ теперь работает
+    document.getElementById('searchForm').submit();
 }
 
 function copyText(element) {
-    const text = element.innerText;  // Берём текст из <td>
+    const text = element.innerText;
     navigator.clipboard.writeText(text).then(() => {
-        // Можно добавить подсветку или уведомление
         element.style.backgroundColor = "#d4edda";
         setTimeout(() => element.style.backgroundColor = "", 500);
     }).catch(err => {

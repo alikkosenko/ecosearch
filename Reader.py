@@ -2,35 +2,30 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pickle
 from time import sleep
-import logging
 import threading
-import pandas as pd
-import os
+
+from config import SCOPE, SHEET, DATA, CREDS
 
 class Reader(threading.Thread):
-    def __init__(self, credentials:str="credenstials.json", sheet:str="Транзит Авто**"):
+    def __init__(self):
         super().__init__()
-        self.credentials = credentials
-        self.sheet = sheet
 
     def read_table(self):
-        scope = ["https://spreadsheets.google.com/feeds",
-                 "https://www.googleapis.com/auth/drive"]
 
-        creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+        creds = ServiceAccountCredentials.from_json_keyfile_name(CREDS, SCOPE)
         client = gspread.authorize(creds)
 
-        sheet = client.open("Транзит Авто**").sheet1
+        sheet = client.open(SHEET).sheet1
 
         rows = sheet.get_all_values()
 
-        with open("data.pkl", "wb") as f:
+        with open(DATA, "wb") as f:
             pickle.dump(rows, f)
 
 
     def run(self):
         while True:
-            print("Update")
+
             self.read_table()
             sleep(30)
 

@@ -1,31 +1,25 @@
 import xml.etree.ElementTree as ET
 from typing import Any
+from config import DRAWINGS, NAMESPACES
 
 def get_img_dict():
-    drawing_file = "drawing1.xml"
-
-    # Пространства имён
-    ns = {
-        "xdr": "http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing",
-        "a": "http://schemas.openxmlformats.org/drawingml/2006/main"
-    }
 
     # Список для результата
     result = dict()
 
-    tree = ET.parse(drawing_file)
+    tree = ET.parse(DRAWINGS)
     root = tree.getroot()
 
     # Ищем все oneCellAnchor и twoCellAnchor
-    for anchor_tag in root.findall("xdr:oneCellAnchor", ns) + root.findall("xdr:twoCellAnchor", ns):
+    for anchor_tag in root.findall("xdr:oneCellAnchor", NAMESPACES) + root.findall("xdr:twoCellAnchor", NAMESPACES):
         # получаем строку верхнего левого угла
-        from_tag = anchor_tag.find("xdr:from", ns)
+        from_tag = anchor_tag.find("xdr:from", NAMESPACES)
         if from_tag is None:
             continue
-        row = int(from_tag.find("xdr:row", ns).text) + 1  # Excel строки с 1
+        row = int(from_tag.find("xdr:row", NAMESPACES).text) + 1  # Excel строки с 1
 
         # имя картинки
-        cNvPr = anchor_tag.find(".//xdr:cNvPr", ns)
+        cNvPr = anchor_tag.find(".//xdr:cNvPr", NAMESPACES)
         if cNvPr is None:
             continue
         img_name = cNvPr.attrib.get("name")

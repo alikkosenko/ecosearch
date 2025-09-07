@@ -4,15 +4,7 @@ import imgsearch
 from datetime import datetime
 
 # Константы с номерами столбцов
-ARRIVAL_DATE = 3
-NOMENCLATURE_NAME = 22
-IMG_NAME = 0
-VIN = 0
-STATUS = 20
-STORAGE = 21
-RESERVE = 4
-LINK = "https://docs.google.com/spreadsheets/d/1PNjWz8LTArpcRovsEUTjd543oEjRHeh7D_N8o4EhIvA/edit?"\
-                   "gid=1640256538#gid=1640256538&range=B{}"
+from config import ARRIVAL_DATE, NOMENCLATURE_NAME, IMG_NAME, VIN, STATUS, STORAGE, RESERVE, TABLE_LINK
 
 
 
@@ -37,7 +29,7 @@ def search_cars(request: str = None) -> list[Any]:
     # retrieving appropriate rows
     for i, row in enumerate(rows, start=1):
         if request.lower() in row[NOMENCLATURE_NAME].lower() and row[VIN] != "":
-            link = LINK.format(i)
+            link = TABLE_LINK.format(i)
             row.insert(0, link)
 
             imgdict = imgsearch.get_img_dict()

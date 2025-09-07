@@ -59,6 +59,37 @@ th {
     background: #f4f4f4;
 }
 
+#overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none; /* изначально скрыт */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader-img {
+    width: 400px;   /* размер картинки */
+    height: 400px;
+    animation: spin 1.5s linear infinite; /* анимация вращения */
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
 table, thead, tbody, th, td, tr {
@@ -92,6 +123,7 @@ td::before {
     font-weight: bold;
 }
 
+
 td:nth-of-type(1)::before { content: "Фото"; }
 td:nth-of-type(2)::before { content: "Артикул"; }
 td:nth-of-type(3)::before { content: "Модель"; }
@@ -102,4 +134,4 @@ td:nth-of-type(7)::before { content: "Ціна наявність"; }
 td:nth-of-type(8)::before { content: "Ціна 20/80"; }
 td:nth-of-type(9)::before { content: "Ціна 80/20"; }
 td:nth-of-type(10)::before { content: "Дата прибуття"; }
-td:nth-of-type(11)::before { content: "Резерв"; }
+td:nth-of-type(11)::before { content: "Резерв"; }}

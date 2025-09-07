@@ -14,6 +14,9 @@
         <input type="text" name="q" placeholder="Введите модель авто" id="searchInput" value="{{ query }}">
         <button class="green-btn" type="submit">Поиск</button>
     </form>
+    <div id="overlay">
+        <img src="{{ url_for('static', filename='pasha.jpg') }}" class="loader-img">
+    </div>
     <img src="{{ url_for('static', filename='Lixiang.png') }}" alt="Car" style="height:50px;">
     <button onclick="quickSearch('Lixiang L6')">Li L6</button>
     <button onclick="quickSearch('Lixiang L7')">Li L7</button>
