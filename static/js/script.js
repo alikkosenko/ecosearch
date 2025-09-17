@@ -15,7 +15,7 @@ document.getElementById("searchForm").addEventListener("submit", function() {
 function quickSearch(text) {
     const input = document.getElementById('searchInput');
     input.value = text;
-    showOverlay();   // ✅ теперь работает
+    //showOverlay();   // ✅ теперь работает
     document.getElementById('searchForm').submit();
 }
 

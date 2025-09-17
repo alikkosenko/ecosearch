@@ -29,6 +29,7 @@ def search_cars(request: str = None) -> list[Any]:
     # retrieving appropriate rows
     for i, row in enumerate(rows, start=1):
         if request.lower() in row[NOMENCLATURE_NAME].lower() and row[VIN] != "":
+            print(row[VIN])
             link = TABLE_LINK.format(i)
             row.insert(0, link)
 
@@ -42,6 +43,8 @@ def search_cars(request: str = None) -> list[Any]:
             model_list.append(row)
 
     # sorting list
+    for i in model_list:
+        print(i)
     model_list.sort(key=parse_date)
 
     model_list = ([i for i in model_list if "в наявност" in i[STATUS].lower() or "в наявност" in i[STORAGE].lower()]
