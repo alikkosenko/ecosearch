@@ -7,6 +7,7 @@ NAMESPACES = {
 SCOPE = ["https://spreadsheets.google.com/feeds",
          "https://www.googleapis.com/auth/drive"]
 SHEET = "Транзит Авто**"
+SHEET_COPY = "Копия Транзит Авто**"
 DATA = "data.pkl"
 CREDS = "credentials.json"
 

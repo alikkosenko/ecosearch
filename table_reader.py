@@ -7,7 +7,6 @@ from datetime import datetime
 from config import ARRIVAL_DATE, NOMENCLATURE_NAME, IMG_NAME, VIN, STATUS, STORAGE, RESERVE, TABLE_LINK
 
 
-
 def parse_date(x):
     try:
         if x[ARRIVAL_DATE]:
@@ -39,11 +38,12 @@ def search_cars(request: str = None) -> list[Any]:
             else:
                 row.insert(0, "")
 
-
+            row.append(i)
             model_list.append(row)
 
     # sorting list
     for i in model_list:
+        print(len(i))
         print(i)
     model_list.sort(key=parse_date)
 
@@ -56,6 +56,11 @@ def search_cars(request: str = None) -> list[Any]:
             i[STATUS] = "-"
         if not i[STORAGE]:
             i[STORAGE] = "-"
+        if not i[RESERVE]:
+            i[RESERVE] = "-"
+
+    for row in model_list:
+        print("len:", len(row), "last:", row[-1])
 
     return model_list
 

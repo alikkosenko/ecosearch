@@ -28,3 +28,36 @@ function copyText(element) {
         console.error("Ошибка копирования: ", err);
     });
 }
+
+function editReserve(cell, row) {
+    let currentValue = cell.innerText.trim();
+    let newValue = prompt("Введите новое значение резерва:", currentValue);
+
+    if (newValue !== null) {
+        // 1. Меняем сразу на странице
+        cell.innerText = newValue;
+
+        // 2. Отправляем на сервер
+        fetch("/update_reserve", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                row: row,       // строка из item
+                value: newValue // новое значение
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.success) {
+                alert("Ошибка при сохранении: " + data.error);
+            }
+        })
+        .catch(err => {
+            console.error("Ошибка запроса:", err);
+            alert("Не удалось обновить резерв.");
+        });
+    }
+}
+

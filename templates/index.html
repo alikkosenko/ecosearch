@@ -17,7 +17,11 @@
     <img src="{{ url_for('static', filename='Lixiang.png') }}" alt="Car" style="height:50px;">
     <button onclick="quickSearch('Lixiang L6')">Li L6</button>
     <button onclick="quickSearch('Lixiang L7')">Li L7</button>
-    <button onclick="quickSearch('Lixiang L9')">Li L9</button><br>
+    <button onclick="quickSearch('Lixiang L9')">Li L9</button>
+    <button onclick="quickSearch('Lixiang i8')">Li i8</button><br>
+    <hr>
+    <img src="{{ url_for('static', filename='Zeekr.png') }}" alt="Car" style="height:50px;">
+    <button onclick="quickSearch('Zeekr 001')"> Zeekr 001</button><br>
     <hr>
     <img src="{{ url_for('static', filename='Xiaomi.png') }}" alt="Car" style="height:50px;">
     <button onclick="quickSearch('Xiaomi SU7')">Xi SU7</button>
@@ -29,6 +33,7 @@
     <img src="{{ url_for('static', filename='Leopard.png') }}" alt="Car" style="height:50px;">
     <button onclick="quickSearch('Leopard 3')">Leo 3</button>
     <button onclick="quickSearch('Leopard 5')">Leo 5</button>
+    <button onclick="quickSearch('Leopard 7')">Leo 7</button>
     <button onclick="quickSearch('Leopard 8')">Leo 8</button><br>
     <hr>
     <img src="{{ url_for('static', filename='Luxeed.png') }}" alt="Car" style="height:50px;">
@@ -36,6 +41,7 @@
     <hr>
     <img src="{{ url_for('static', filename='Aito.png') }}" alt="Car" style="height:50px;">
     <button onclick="quickSearch('AITO M5')">AITO M5</button>
+    <button onclick="quickSearch('AITO M7')">AITO M7</button>
     <button onclick="quickSearch('AITO M8')">AITO M8</button><br>
     <hr>
     <img src="{{ url_for('static', filename='Denza.png') }}" alt="Car" style="height:50px;">
@@ -55,11 +61,15 @@
     <button onclick="quickSearch('Han')">Han</button>
     <button onclick="quickSearch('Han L')">Han L</button>
     <button onclick="quickSearch('Tang L')">Tang L</button>
+    <button onclick="quickSearch('Qin L')">Qin L</button>
     <button onclick="quickSearch('Qin Plus')">Qin Plus</button>
     <button onclick="quickSearch('Dolphin')">Dolphin</button>
     <button onclick="quickSearch('Seagull')">Seagull</button>
     <button onclick="quickSearch('Summer')">Summer</button>
-    <button onclick="quickSearch('Yuan Up')">Yuan Up</button><br>
+    <button onclick="quickSearch('Yuan Up')">Yuan Up</button>
+    <button onclick="quickSearch('Yuan Plus')">Yuan Plus</button>
+    <button onclick="quickSearch('Dolphin')">Dolphin</button>
+    <br>
     <hr>
     <img src="{{ url_for('static', filename='Geely.png') }}" alt="Car" style="height:50px;">
     <button onclick="quickSearch('Starship 7')">Starship 7</button>
@@ -88,7 +98,7 @@
                         <th>VIN</th>
                         <th>Статус</th>
                         <th>Склад</th>
-                        <th>Ціна наявніть</th>
+                        <th>Ціна наявність</th>
                         <th>Ціна 20/80</th>
                         <th>Ціна 80/20</th>
                         <th>Дата прибуття</th>
@@ -108,7 +118,7 @@
                             <td>{{ item[6] }}</td>
                             <td>{{ item[7] }}</td>
                             <td>{{ item[8] }}</td>
-                            <td>{{ item[9] }}</td>
+                            <td onclick="editReserve(this, {{ item[-1] }})">{{ item[9] }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
