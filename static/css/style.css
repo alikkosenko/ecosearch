@@ -11,6 +11,12 @@ h2 {
     margin-bottom: 15px;
 }
 
+img.small_img {
+    max-height: 35px;
+    width: auto; /* чтобы не растягивалось */
+}
+
+
 form {
     display: flex;
     justify-content: center;

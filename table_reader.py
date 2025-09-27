@@ -30,16 +30,17 @@ def search_cars(request: str = None) -> list[Any]:
         if request.lower() in row[NOMENCLATURE_NAME].lower() and row[VIN] != "":
             print(row[VIN])
             link = TABLE_LINK.format(i)
-            row.insert(0, link)
+            row_copy = row.copy()
+            row_copy.insert(0, link)
 
             imgdict = imgsearch.get_img_dict()
             if i in imgdict:
-                row.insert(0, imgdict[i])
+                row_copy.insert(0, imgdict[i])
             else:
-                row.insert(0, "")
+                row_copy.insert(0, "")
 
-            row.append(i)
-            model_list.append(row)
+            row_copy.append(i)
+            model_list.append(row_copy)
 
     # sorting list
     for i in model_list:
@@ -47,9 +48,13 @@ def search_cars(request: str = None) -> list[Any]:
         print(i)
     model_list.sort(key=parse_date)
 
-    model_list = ([i for i in model_list if "в наявност" in i[STATUS].lower() or "в наявност" in i[STORAGE].lower()]
-                  + [i for i in model_list if "в наявност" not in i[STATUS].lower() or "в наявност" not in i[STORAGE].lower()])
-    model_list = [i for i in model_list if not i[RESERVE]] + [i for i in model_list if i[RESERVE]]
+    # Сначала сортировка по "в наличии"
+    model_list.sort(key=lambda x: not (
+            "в наявност" in x[STATUS].lower() or "в наявност" in x[STORAGE].lower()
+    ))
+
+    # Потом сортировка по резерву
+    model_list.sort(key=lambda x: bool(x[RESERVE]))
 
     for i in model_list:
         if not i[STATUS]:
