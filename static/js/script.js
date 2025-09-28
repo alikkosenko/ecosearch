@@ -61,3 +61,18 @@ function editReserve(cell, row) {
     }
 }
 
+function editStatus(cell, row) {
+    const newValue = prompt("Введите новый статус:", cell.innerText);
+    if (newValue !== null) {
+        cell.innerText = newValue;
+
+        fetch("/update_status", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ row: row, value: newValue })
+        }).then(r => r.json())
+          .then(data => console.log("Updated:", data))
+          .catch(err => console.error("Error:", err));
+    }
+}
+

@@ -5,7 +5,7 @@ import threading
 import gspread
 import logging
 
-from config import RESERVE, SHEET,SHEET_COPY
+from config import RESERVE, SHEET, SHEET_COPY, STATUS
 
 logging.basicConfig(
     filename="eco.log",
@@ -62,6 +62,22 @@ def update_reserve():
 
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
+
+@app.route("/update_status", methods=["POST"])
+def update_status():
+    data = request.get_json()
+    row = int(data["row"])
+    value = data["value"]
+
+    # Авторизация gspread
+    gc = gspread.service_account(filename="credentials.json")
+    sheet = gc.open(SHEET).worksheet("Транзит")
+
+    # Здесь RESERVE заменяешь на STATUS
+    sheet.update_cell(row, STATUS-1, value)
+
+    return jsonify(success=True, row=row, value=value)
+
 
 
 if __name__ == "__main__":
