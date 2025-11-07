@@ -27,6 +27,7 @@ def search_cars(request: str = None) -> list[Any]:
     model_list = list()
     # retrieving appropriate rows
     for i, row in enumerate(rows, start=1):
+        print(row)
         if request.lower() in row[NOMENCLATURE_NAME].lower() and row[VIN] != "":
             print(row[VIN])
             link = TABLE_LINK.format(i)
