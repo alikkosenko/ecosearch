@@ -11,12 +11,17 @@ SHEET_COPY = "Копия Транзит Авто**"
 DATA = "data.pkl"
 CREDS = "credentials.json"
 
-ARRIVAL_DATE = 8
-NOMENCLATURE_NAME = 28
-IMG_NAME = 0
-VIN = 0
-STATUS = 12
-STORAGE = 13
-RESERVE = 9
+
+FIELDS = {
+    "IMG_NAME": 0,
+    "ARTICLE_NAME": 1,
+    "ARRIVAL_DATE": 8,
+    "NOMENCLATURE_NAME": 28,
+    "VIN": 0,
+    "STATUS": 12,
+    "STORAGE": 13,
+    "RESERVE": 9
+}
+
 TABLE_LINK = "https://docs.google.com/spreadsheets/d/1PNjWz8LTArpcRovsEUTjd543oEjRHeh7D_N8o4EhIvA/edit?"\
                    "gid=1640256538#gid=1640256538&range=B{}"

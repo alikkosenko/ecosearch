@@ -5,7 +5,7 @@ import threading
 import gspread
 import logging
 
-from config import RESERVE, SHEET, SHEET_COPY, STATUS
+from config import RESERVE, SHEET, SHEET_COPY, STATUS, FIELDS
 
 logging.basicConfig(
     filename="eco.log",
@@ -30,7 +30,7 @@ def search_page():
         results = tr.search_cars(query)
 
     logging.info(query)
-    return render_template("index.html", query=query, results=results)
+    return render_template("index.html", query=query, results=results, fields=FIELDS)
 
 @app.route("/vin", methods=["GET"])
 def search_vin():
